@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Taller 2 Compose</string>
+    <string name="google_maps_key" translatable="false">REEMPLAZAR_CON_TU_API_KEY</string>
+</resources>
