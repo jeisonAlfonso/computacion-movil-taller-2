@@ -259,11 +259,30 @@ Abre estos archivos en Android Studio:
 - `app/src/main/java/com/example/taller2/ui/MediaScreen.kt`
 - `app/src/main/java/com/example/taller2/ui/MapScreen.kt`
 - `app/src/main/java/com/example/taller2/location/GeocoderUtils.kt`
+- `app/src/main/java/com/example/taller2/location/DirectionsApi.kt`
+- `app/src/main/java/com/example/taller2/media/MediaFileUtils.kt`
 - `app/src/main/AndroidManifest.xml`
 
 ### Qué decir
 
 > Ahora voy a mostrar brevemente las partes principales del código. En MainActivity y Taller2App se encuentra la estructura principal de la aplicación y la navegación entre pantallas. En MediaScreen está implementado el manejo de cámara, galería, foto, video y vista previa. En MapScreen se encuentra la lógica de permisos de ubicación, mapa, sensor de luz, polyline, búsqueda por texto y marcadores por long click. En GeocoderUtils se encapsula la lógica de geocoder y geocoder inverso. Finalmente, en AndroidManifest se definen los permisos requeridos por la aplicación.
+
+### Explicación rápida por clase/archivo (1 a 2 minutos)
+
+Puedes decirlo así, corto y directo:
+
+- `MainActivity.kt`: esta es la entrada de la app, inicializa Compose y carga `Taller2App`.
+- `Taller2App.kt`: define la pantalla principal con los dos botones y controla la navegación simple entre Inicio, Multimedia y Mapa.
+- `MediaScreen.kt`: maneja el switch Foto/Video, captura con cámara, selección desde galería y muestra la vista previa dentro de la app.
+- `MapScreen.kt`: concentra permisos de ubicación, mapa en vivo, marcador actual, cambio claro/oscuro por luminosidad, polyline de recorrido, búsqueda por texto y long click.
+- `GeocoderUtils.kt`: convierte texto en coordenadas (`geocode`) y coordenadas en dirección (`reverse geocode`).
+- `DirectionsApi.kt`: consulta Directions API para construir rutas por calles y pintar la polyline vial hacia un destino.
+- `MediaFileUtils.kt`: crea URIs temporales seguras para foto y video usando `FileProvider`.
+- `AndroidManifest.xml`: declara permisos (cámara, internet, ubicación), la API key de Maps y el `FileProvider`.
+
+Frase puente para cerrar esta parte:
+
+> Con estos archivos se cubren todas las funcionalidades pedidas del taller: multimedia, permisos, geolocalización, geocoder, mapa dinámico y rutas.
 
 ---
 
