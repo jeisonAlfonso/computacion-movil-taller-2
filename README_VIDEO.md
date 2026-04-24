@@ -127,6 +127,37 @@ Si el trabajo es en pareja, agrega esta línea:
 
 > Ahora voy a mostrar la segunda funcionalidad principal del taller, que corresponde al manejo de mapa, permisos de ubicación, geocoder, sensor de luminosidad y trazado de rutas. Al ingresar a esta pantalla, la aplicación solicita los permisos de localización necesarios para acceder a la posición actual del usuario.
 
+### Comandos de apoyo para la demo (consola)
+
+Abre una terminal PowerShell aparte antes de iniciar la parte de mapa y deja esta variable lista:
+
+```powershell
+$adb = "C:\Users\Jeiso\AppData\Local\Android\Sdk\platform-tools\adb.exe"
+```
+
+Puntos sugeridos en Bogota para simular ubicacion:
+
+```powershell
+# Universidad Javeriana
+& $adb -s emulator-5554 emu geo fix -74.0639 4.6281
+
+# Parque Simon Bolivar
+& $adb -s emulator-5554 emu geo fix -74.0932 4.6583
+
+# Monserrate
+& $adb -s emulator-5554 emu geo fix -74.0559 4.6058
+```
+
+Comandos de luminosidad para cambiar estilo de mapa:
+
+```powershell
+# Oscuro
+& $adb -s emulator-5554 emu sensor set light 5
+
+# Claro
+& $adb -s emulator-5554 emu sensor set light 220
+```
+
 ---
 
 ## 9. Marcador de ubicación actual
@@ -134,6 +165,7 @@ Si el trabajo es en pareja, agrega esta línea:
 ### Qué mostrar
 - Muestra el mapa con el marcador actual.
 - Si se ve el botón de mi ubicación, puedes usarlo.
+- Ejecuta en consola un `geo fix` para ubicarte inicialmente en Bogota (por ejemplo Javeriana).
 
 ### Qué decir
 
@@ -146,6 +178,7 @@ Si el trabajo es en pareja, agrega esta línea:
 ### Qué mostrar
 - Señala el texto donde se indica si el estilo está claro u oscuro.
 - Si puedes, demuestra el cambio con el sensor.
+- Ejecuta `light 5` y luego `light 220` para forzar oscuro y claro durante la demo.
 
 ### Qué decir
 
@@ -163,6 +196,17 @@ Si no logras mostrar el cambio en vivo, usa esta frase:
 - Si estás en emulador, simula movimiento.
 - Si estás en celular, muestra un pequeño cambio de posición.
 - Señala la línea de recorrido.
+- En emulador, ejecuta dos o tres comandos `geo fix` en secuencia para pintar el recorrido.
+
+Secuencia sugerida:
+
+```powershell
+& $adb -s emulator-5554 emu geo fix -74.0639 4.6281
+Start-Sleep -Seconds 4
+& $adb -s emulator-5554 emu geo fix -74.0932 4.6583
+Start-Sleep -Seconds 4
+& $adb -s emulator-5554 emu geo fix -74.0559 4.6058
+```
 
 ### Qué decir
 
@@ -289,5 +333,7 @@ Abre estos archivos en Android Studio:
 - Tener permisos limpios si quieres que se vea la solicitud.
 - Tener lista una búsqueda como `Universidad Javeriana`.
 - Si usas emulador, dejar preparada la simulación de ubicación.
+- Si usas emulador, dejar listos comandos `geo fix` y `sensor set light` en una terminal aparte.
+- Confirmar id del emulador con `adb devices` (por ejemplo `emulator-5554`).
 - Verificar que el APK exista en `app/build/outputs/apk/debug/app-debug.apk`.
 
